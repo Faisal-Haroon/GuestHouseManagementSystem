@@ -25,7 +25,7 @@ public class Guest {
     }
 
     public void create() {
-        // bad me kro ga implement :)
+        System.out.println("Guest Created");
     }
 
 }

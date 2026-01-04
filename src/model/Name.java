@@ -7,7 +7,6 @@ public class Name {
         this.lastName = lastName;
     }
 
-    // Getters and setters
     public String getFirstName() { 
         return firstName; 
     }
