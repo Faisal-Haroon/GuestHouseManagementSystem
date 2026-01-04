@@ -1,16 +1,31 @@
 public class Guest {
 
-    private String name;
+    private Name name;
+    private Address addressDetails;
 
-    public Guest(String name) {
+    public Guest(Name name, Address addressDetails) {
         this.name = name;
+        this.addressDetails = addressDetails;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
+
+    public Address getAddressDetails() {
+        return addressDetails;
+    }
+
+    public void setAddressDetails(Address addressDetails) {
+        this.addressDetails = addressDetails;
+    }
+
+    public void create() {
+        // bad me kro ga implement :)
+    }
+
 }
