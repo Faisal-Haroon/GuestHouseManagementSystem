@@ -1,3 +1,4 @@
+package model;
 public class Guest {
 
     private Name name;
