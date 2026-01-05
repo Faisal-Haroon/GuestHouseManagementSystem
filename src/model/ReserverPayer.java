@@ -1,17 +1,20 @@
-
 package model;
-public class ReserverPayer {
 
+public class ReserverPayer extends Guest {
     private CreditCard creditCardDetails;
     private Identity id;
 
-    public ReserverPayer(CreditCard creditCardDetails, Identity id) {
-        this.creditCardDetails = creditCardDetails;
+    public ReserverPayer(Name name, Address address, CreditCard card, Identity id) {
+
+        super(name, address);
+        this.creditCardDetails = card;
         this.id = id;
     }
 
+    @Override
     public void create() {
-        System.out.println("Payer record has been created in the system.");
+        // other logic bad me phr kabi..
+        System.out.println("ReserverPayer created (Inherited from Guest)");
     }
 
     public CreditCard getCreditCardDetails() {
