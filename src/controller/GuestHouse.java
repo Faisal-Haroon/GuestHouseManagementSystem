@@ -1,29 +1,28 @@
 package controller;
 
 import entities.Room;
-import model.Guest;
 import entities.Reservation;
+import model.Guest;
+import model.Name;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuestHouse {
 
-    private String name;
+    private Name name;
+
     private List<Room> rooms;
     private List<Reservation> reservations;
 
-    public GuestHouse(String name) {
+    public GuestHouse(Name name) {
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
     }
 
-    public void addRoom(Room room) {
-        if (room != null) {
-            rooms.add(room);
-        }
-    }
-
+   
+    // createReservation()
     public boolean createReservation(Reservation reservation, Room room) {
 
         if (reservation == null || room == null) {
@@ -38,6 +37,7 @@ public class GuestHouse {
         return true;
     }
 
+    // checkinGuest()
     public boolean checkInGuest(Guest guest, int roomNumber) {
 
         if (guest == null) {
@@ -58,14 +58,14 @@ public class GuestHouse {
         return false;
     }
 
-    // Check-out Guest
+    // checkOutGuest()
     public boolean checkOutGuest(int roomNumber) {
 
         for (Room room : rooms) {
             if (room.getNumber() == roomNumber) {
 
                 if (room.getOccupied() == null) {
-                    return false; // already empty
+                    return false;
                 }
 
                 room.setOccupied(null);
@@ -75,7 +75,7 @@ public class GuestHouse {
         return false;
     }
 
-    // Check availability
+    // available()
     public boolean available(int roomNumber) {
 
         for (Room room : rooms) {
@@ -86,7 +86,7 @@ public class GuestHouse {
         return false;
     }
 
-    // Cancel Reservation (CCP Q1)
+    // cancelReservation()
     public boolean cancelReservation(int reservationNumber) {
 
         if (reservations == null || reservations.isEmpty()) {
@@ -102,7 +102,7 @@ public class GuestHouse {
         return false;
     }
 
-    public String getName() {
+    public Name getName() {
         return name;
     }
 }
