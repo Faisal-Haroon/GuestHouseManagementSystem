@@ -11,50 +11,49 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Create basic objects
-        Name guestHouseName = new Name("Pearl", "Inn");
-        GuestHouse guestHouse = new GuestHouse(guestHouseName);
+        System.out.println("=== Guest House Management System  ===\n");
+
+        // Guest House
+        GuestHouse guestHouse = new GuestHouse(
+                new Name("Pearl", "GuestHouse"));
 
         GuestHouseChain chain = new GuestHouseChain(guestHouse);
 
-        // Create Rooms
-        Room room1 = new Room(101);
-        Room room2 = new Room(102);
+        // Rooms
+        Room room101 = new Room(101);
+        guestHouse.addRoom(room101);
 
-        guestHouse.addRoom(room1);
-        guestHouse.addRoom(room2);
+        // Guest
+        Guest guest = new Guest(
+                new Name("Babar", "Azam"),
+                new Address("Street 1", "Lahore", "54000"));
 
-        // Create Guest
-        Name guestName = new Name("Ali", "Khan");
-        Address address = new Address("Street 1", "Lahore", "54000");
-        Guest guest = new Guest(guestName, address);
+        System.out.println("Guest created: " +
+                guest.getName().getFirstName() + " " +
+                guest.getName().getLastName());
 
-        // Create Reservation
+        // Reservation
         Reservation reservation = new Reservation(
-                new Date(),
-                new Date(),
-                new Date(),
-                1
-        );
+                new Date(), new Date(), new Date(), 5001);
 
-        // Make Reservation
-        boolean reserved = chain.makeReservation(reservation, room1);
-        System.out.println("Reservation created: " + reserved);
+        boolean created = chain.makeReservation(reservation, room101);
+        System.out.println("Reservation #5001 created: " + created);
 
-        // Check-in Guest
+        // Check-in
         boolean checkIn = chain.checkInGuest(guest, 101);
-        System.out.println("Guest checked in: " + checkIn);
+        System.out.println("Guest checked in to Room 101: " + checkIn);
 
-        // Check availability
-        // boolean available = chain.available(101);
-        // System.out.println("Room 101 available: " + available);
+        // Availability
+        System.out.println("Room 101 available? " +
+                guestHouse.available(101));
 
-        // Check-out Guest
+        // Check-out
         boolean checkOut = chain.checkOutGuest(101);
-        System.out.println("Guest checked out: " + checkOut);
+        System.out.println("Guest checked out from Room 101: " + checkOut);
 
         // Cancel Reservation
-        boolean cancelled = chain.cancelReservation(1);
-        System.out.println("Reservation cancelled: " + cancelled);
+        boolean cancelled = chain.cancelReservation(5001);
+        System.out.println("Reservation #5001 cancelled: " + cancelled);
+
     }
 }
