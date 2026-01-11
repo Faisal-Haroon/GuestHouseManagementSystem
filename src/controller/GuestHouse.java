@@ -21,6 +21,15 @@ public class GuestHouse {
         this.reservations = new ArrayList<>();
     }
 
+    // addRoom()
+public void addRoom(Room room) {
+
+    if (room == null) {
+        return;
+    }
+
+    rooms.add(room);
+}
    
     // createReservation()
     public boolean createReservation(Reservation reservation, Room room) {

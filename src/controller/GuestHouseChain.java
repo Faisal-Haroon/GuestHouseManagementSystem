@@ -1,9 +1,10 @@
 package controller;
+
 import model.Guest;
 import entities.Reservation;
 import entities.Room;
 import model.ReserverPayer;
-
+import controller.GuestHouse;   
 public class GuestHouseChain {
 
     private GuestHouse guestHouse; 
