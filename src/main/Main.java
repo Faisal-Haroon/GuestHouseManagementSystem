@@ -51,9 +51,7 @@ public class Main {
         boolean checkOut = chain.checkOutGuest(101);
         System.out.println("Guest checked out from Room 101: " + checkOut);
 
-        // Cancel Reservation
-        boolean cancelled = chain.cancelReservation(5001);
-        System.out.println("Reservation #5001 cancelled: " + cancelled);
+        
 
     }
 }
