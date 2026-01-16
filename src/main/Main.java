@@ -12,58 +12,59 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Guest House Management System  ===\n");
+        System.out.println("===== Guest House Management System =====\n");
 
-        // Guest House
+       
         GuestHouse guestHouse = new GuestHouse(
-                new Name("Pearl", "GuestHouse"));
-
+                new Name("Vantage Lodge", "GuestHouse"));
         GuestHouseChain chain = new GuestHouseChain(guestHouse);
 
-        // Rooms
+        System.out.println("Guest House created: Vantage Lodge GuestHouse");
+
+        
         Room room101 = new Room(101);
         guestHouse.addRoom(room101);
+        System.out.println("Room added: Room 101");
 
-        // Guest
+       
         Guest guest = new Guest(
                 new Name("Babar", "Azam"),
                 new Address("Street 1", "Lahore", "54000"));
 
-        System.out.println("Guest created: " +
-                guest.getName().getFirstName() + " " +
-                guest.getName().getLastName());
+        System.out.println("Guest created: Babar Azam");
 
-        // Reservation
+        
+        RoomType roomType = new RoomType(
+                RoomKind.SUITE,
+                new Money(12000));
+
+        System.out.println("Room Type: " + roomType.getKind());
+        System.out.println("Room Cost per night: " +
+                roomType.getCost().getAmount());
+
+       
         Reservation reservation = new Reservation(
                 new Date(), new Date(), new Date(), 5001);
 
         boolean created = chain.makeReservation(reservation, room101);
-        System.out.println("Reservation #5001 created: " + created);
+        System.out.println("Reservation created (ID 5001): " + created);
 
-        // Check-in
+       
         boolean checkIn = chain.checkInGuest(guest, 101);
-        System.out.println("Guest checked in to Room 101: " + checkIn);
+        System.out.println("Guest checked in to Room 101");
 
-        // Availability
-        System.out.println("Room 101 available? " +
+      
+        System.out.println("Is Room 101 available? " +
                 guestHouse.available(101));
 
-        // Check-out
+      
         boolean checkOut = chain.checkOutGuest(101);
-        System.out.println("Guest checked out from Room 101: " + checkOut);
+        System.out.println("Guest checked out from Room 101");
 
-        // Cancel Reservation
+       
         boolean cancelled = chain.cancelReservation(5001);
-        System.out.println("Reservation #5001 cancelled: " + cancelled);
+        System.out.println("Reservation cancelled (ID 5001): " + cancelled);
 
-
-        RoomType roomKind = new RoomType(
-        RoomKind.SUITE,
-        new Money(12000)
-        );
-
-        System.out.println("Room Type: " + roomKind.getKind());
-        System.out.println("Room Cost: " + roomKind.getCost().getAmount());
-
+        
     }
 }
