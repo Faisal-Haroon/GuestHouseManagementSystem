@@ -10,7 +10,7 @@ public class Room {
     }
 
     public void createGuest() {
-        // bad me likhna h yaha logic..
+       
         System.out.println("Guest creation process started for room: " + number);
     }
 
